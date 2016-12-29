@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>index</title>
+  
+  <script src="http://127.0.0.1:3000/jquery.js"></script>
+</head>
+<body>
+  <h1>index site</h1>
+  <ul>
+    <li>123</li>
+    <li>456</li>
+  </ul><script>
+     $.ajax({
+       'url':"/category/queryTopCategory",
+       'type':"GET",
+       'dataType':'json',
+       'success':function(data){
+         console.log(data);
+         alert(data);
+    
+    }});
+
+    // $.ajax({
+    //    'url':"/employee/employeeLogin",
+    //    'type':"POST",
+    //    'data': { "username": "root", "password": "123456" },
+    //    'dataType':'json',
+    //    'success':function(data){
+    //      console.log(data);
+    //     $.ajax({
+    //       'url':"/product/queryProduct?page=1&pageSize=5",
+    //       'type':"GET",
+    //       'dataType':'json',
+    //       'success':function(data){
+    //       console.log(data);
+    //       alert(data);
+    
+    //    }});
+    
+    //  }});
+     
+  </script>
+</body>
+</html>

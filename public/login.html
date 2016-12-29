@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+    <link rel='stylesheet' href='./stylesheets/bootstrap.css' />
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link href="./stylesheets/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/"></a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="container" class="container">
+    <form class="form-horizontal" method="post" action="/user/login">
+        <fieldset>
+            <legend>用户登入</legend>
+            <div class="control-group">
+                <label class="control-label" for="username">用户名</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge" id="username" name="username">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">口令</label>
+                <div class="controls">
+                    <input type="password" class="input-xlarge" id="password" name="password">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">登入</button>
+            </div>
+        </fieldset>
+    </form>
+    <hr />
+    <footer>
+        <p><a target="_blank"></p>
+    </footer>
+</div>
+</body>
+<script src="./javascripts/jquery.js"></script>
+<script src="./javascripts/bootstrap.js"></script>
+</html>

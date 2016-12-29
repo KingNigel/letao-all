@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+    <link rel='stylesheet' href='./stylesheets/bootstrap.css' />
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link href="./stylesheets/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="container" class="container">
+    <form class="form-horizontal" method="post" action="/reg">
+        <fieldset>
+            <legend>用户注册</legend>
+            <div class="control-group">
+                <label class="control-label" for="username">用户名</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge" id="username" name="username">
+                    <p class="help-block">你的账户名称，用于登录和显示。</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">口令</label>
+                <div class="controls">
+                    <input type="password" class="input-xlarge" id="password" name="password">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password-repeat">重复输入口令</label>
+                <div class="controls">
+                    <input type="password" class="input-xlarge" id="password-repeat"
+                           name="password-repeat">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">注册</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <hr />
+    <footer>
+        <p><a target="_blank"></a> </p>
+    </footer>
+</div>
+</body>
+<script src="./javascripts/jquery.js"></script>
+<script src="./javascripts/bootstrap.js"></script>
+</html>
