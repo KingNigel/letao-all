@@ -36,7 +36,7 @@ router.post("/updateTopCategory",checkRootLogin)
 router.post("/updateTopCategory",function(req,res) {
      var category=new Category({
         id: req.body.id ? req.body.id : '',
-        proName: req.body.categoryName ? req.body.categoryName : '',
+        categoryName: req.body.categoryName ? req.body.categoryName : '',
         isDelete: req.body.isDelete ? req.body.isDelete : ''
      })
     Category.updateTopCategory(category,function(err,data){
@@ -44,8 +44,4 @@ router.post("/updateTopCategory",function(req,res) {
         res.send({ "success": true });
     })
 });
-
-
-
-
 module.exports = router;
