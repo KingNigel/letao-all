@@ -27,7 +27,7 @@ router.post("/addTopCategory",function(req,res) {
      })
     Category.addTopCategory(category,function(err,data){
       if (err)  return res.send({ "error": 403, "message": "数据库异常！" });
-        res.send(data);
+        res.send({ "success": true });
     })
 });
 router.post("/updateTopCategory",checkRootLogin)
@@ -39,7 +39,7 @@ router.post("/updateTopCategory",function(req,res) {
      })
     Category.updateTopCategory(category,function(err,data){
       if (err)  return res.send({ "error": 403, "message": "数据库异常！" });
-        res.send(data);
+        res.send({ "success": true });
     })
 });
 
