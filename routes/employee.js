@@ -2,6 +2,12 @@ var express = require('express'),
     router = express.Router(),
     crypto = require('crypto'),
     Employee = require('../models/employee.js');
+router.get("/checkRootLogin", function (req, res) {
+   if (!req.session.employee) {
+       return res.send({ "error": 400, "message": "未登录！" });
+    }
+      res.send({ "success": true });
+});
 
 
 router.post("/employeeLogin", function (req, res) {

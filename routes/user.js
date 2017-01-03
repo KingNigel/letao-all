@@ -2,6 +2,7 @@ var express = require('express'),
     router = express.Router(),
     crypto = require('crypto'),
     User = require('../models/user.js');
+
 function checkRootLogin(req, res, next) {
     if (!req.session.employee) {
        return res.send({ "error": 400, "message": "未登录！" });
