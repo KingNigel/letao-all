@@ -12,34 +12,35 @@
     <li>123</li>
     <li>456</li>
   </ul><script>
-     $.ajax({
-       'url':"/category/queryTopCategory",
-       'type':"GET",
-       'dataType':'json',
-       'success':function(data){
-         console.log(data);
-         alert(data);
-    
-    }});
-
-    // $.ajax({
-    //    'url':"/employee/employeeLogin",
-    //    'type':"POST",
-    //    'data': { "username": "root", "password": "123456" },
+    //  $.ajax({
+    //    'url':"/category/queryTopCategory",
+    //    'type':"GET",
     //    'dataType':'json',
     //    'success':function(data){
     //      console.log(data);
-    //     $.ajax({
-    //       'url':"/product/queryProduct?page=1&pageSize=5",
-    //       'type':"GET",
-    //       'dataType':'json',
-    //       'success':function(data){
-    //       console.log(data);
-    //       alert(data);
+    //      alert(data);
     
-    //    }});
+    // }});
+
+    $.ajax({
+       'url':"/employee/employeeLogin",
+       'type':"POST",
+       'data': { "username": "root", "password": "123456" },
+       'dataType':'json',
+       'success':function(data){
+         console.log(data);
+        $.ajax({
+          'url':"/category/addTopCategory",
+          'type':"POST",
+           'data': { "categoryName": "分类1"},
+          'dataType':'json',
+          'success':function(data){
+          console.log(data);
+          alert(data);
     
-    //  }});
+       }});
+    
+     }});
      
   </script>
 </body>

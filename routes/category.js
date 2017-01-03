@@ -22,10 +22,12 @@ router.get("/querySecondCategory",function(req,res) {
 });
 router.post("/addTopCategory",checkRootLogin)
 router.post("/addTopCategory",function(req,res) {
+      console.log(req.body.categoryName);
      var category=new Category({
-        proName: req.query.categoryName ? req.query.categoryName : '',
+        categoryName: req.body.categoryName ? req.body.categoryName : '',
      })
     Category.addTopCategory(category,function(err,data){
+        console.log(err);
       if (err)  return res.send({ "error": 403, "message": "数据库异常！" });
         res.send({ "success": true });
     })
@@ -33,9 +35,9 @@ router.post("/addTopCategory",function(req,res) {
 router.post("/updateTopCategory",checkRootLogin)
 router.post("/updateTopCategory",function(req,res) {
      var category=new Category({
-        id: req.query.id ? req.query.id : '',
-        proName: req.query.categoryName ? req.query.categoryName : '',
-        isDelete: req.query.isDelete ? req.query.isDelete : ''
+        id: req.body.id ? req.body.id : '',
+        proName: req.body.categoryName ? req.body.categoryName : '',
+        isDelete: req.body.isDelete ? req.body.isDelete : ''
      })
     Category.updateTopCategory(category,function(err,data){
       if (err)  return res.send({ "error": 403, "message": "数据库异常！" });

@@ -1,9 +1,9 @@
 var db = require('./db.js');
 
 function Category(category) {
-  this.id = cart.id;
-  this.categoryName = cart.categoryName;
-  this.isDelete = cart.isDelete;
+  this.id = category.id;
+  this.categoryName = category.categoryName;
+  this.isDelete = category.isDelete;
 };
 Category.queryTopCategory = function (callback) {
     var selectSql = 'select * from category where isDelete=1';
@@ -21,6 +21,7 @@ Category.querySecondCategory = function (id,callback) {
         if (err) {
             return callback(err);
         }
+        console.log(data);
         var data = result;
         callback(err, data);
     });
