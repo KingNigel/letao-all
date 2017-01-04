@@ -19,6 +19,17 @@ User.queryUser = function (page, callback) {
 		callback(err, data);
 	});
 };
+User.queryUserMessage = function (id, callback) {
+	var selectSql = 'select * from user where id=?';
+	db.query(selectSql, [id], function (err, result) {
+		if (err) {
+			return callback(err);
+		}
+		var data=result[0];
+		callback(err, data);
+	});
+};
+
 User.updateUser= function (user, callback) {
 	var selectSql = 'UPDATE user SET isDelete =? WHERE id=?';
 	db.query(selectSql, [ parseInt(user.isDelete),user.id], function (err, result) {

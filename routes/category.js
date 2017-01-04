@@ -20,6 +20,12 @@ router.get("/querySecondCategory",function(req,res) {
         res.send(data);
     })
 });
+router.get("/queryHotSecondCategory",function(req,res) {
+    Category.queryHotSecondCategory(req.query.id,function(err,data){
+      if (err)  return res.send({ "error": 403, "message": "数据库异常！" });
+        res.send(data);
+    })
+});
 router.post("/addTopCategory",checkRootLogin)
 router.post("/addTopCategory",function(req,res) {
       console.log(req.body.categoryName);

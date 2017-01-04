@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>employee</title>
+  <script src="./jquery.js"></script>
+</head>
+<body>
+  <h1>测试employee</h1>
+  <script>
+  //登录接口 employee-login 测试
+    //  $.ajax({
+    //    'url':"/employee/employeeLogin",
+    //    'type':"POST",
+    //    'dataType':'json',
+    //    'data': { "username": "root", "password": "123456" },
+    //    'success':function(data){
+    //      console.log(data);
+        
+    // }});
+
+  //登出接口 employee-logout 测试
+    //  $.ajax({
+    //    'url':"/employee/employeeLogout",
+    //    'type':"GET",
+    //    'dataType':'json',
+    //    'success':function(data){
+    //      console.log(data);
+    // }});
+    //判断管理员登录 check-root-login 测试
+     $.ajax({
+       'url':"/employee/checkRootLogin",
+       'type':"GET",
+       'dataType':'json',
+       'success':function(data){
+         console.log(data);
+    }});
+     
+  </script>
+</body>
+</html>

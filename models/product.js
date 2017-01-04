@@ -6,7 +6,7 @@ function Product(pro) {
 	this.proName = pro.proName;
 	this.oldPrice = pro.oldPrice;
 	this.price = pro.price;
-	this.pic = pro.pic;
+	//this.pic = pro.pic;
 	this.proDesc = pro.proDesc;
 	this.size = pro.size;
 	this.statu = pro.statu;
@@ -47,7 +47,7 @@ Product.queryProductDetailList= function (product, page, callback) {
   });
 };
 Product.queryProduct = function (product, page, callback) {
-	var selectSql = "SELECT id,proName,price,pic,num FROM product WHERE statu=1";
+	var selectSql = "SELECT id,proName,price,num FROM product WHERE statu=1";
 	var param = new Array();
 	if (product.proName) {
 		selectSql = selectSql + " AND  proName LIKE ? ";
@@ -99,9 +99,10 @@ Product.queryProductDetail = function (id, callback) {
 	});
 };
 Product.addProduct = function (product, callback) {
-  var selectSql = 'insert into product (id,proName,oldPrice,price,pic,proDesc,size,statu,updateTime,num,brandId)  values (null,?,?,?,?,?,?,?,?,?,?,?)';
-  db.query(selectSql, [product.proName, product.oldPrice, product.price, product.pic, product.proDesc, product.size, product.statu, product.updateTime, product.num, product.brandId], function (err, result) {
+  var selectSql = 'insert into product (id,proName,oldPrice,price,proDesc,size,statu,updateTime,num,brandId)  values (null,?,?,?,?,?,?,?,?,?)';
+  db.query(selectSql, [product.proName, product.oldPrice, product.price, product.proDesc, product.size, product.statu, product.updateTime, product.num, product.brandId], function (err, result) {
     if (err) {
+      console.log(err);
       return callback(err);
     }
     callback(err, result);
@@ -130,14 +131,6 @@ Product.updateProduct = function (product, callback) {
   else if (product.price && param.length != 0) {
     selectSql += ' ,price=? ';
     param[param.length] = product.price;
-  }
-  if (product.pic && param.length == 0) {
-    selectSql += ' pic=? ';
-    param[param.length] = product.pic;
-  }
-  else if (product.pic && param.length != 0) {
-    selectSql += ' ,pic=? ';
-    param[param.length] = product.pic;
   }
   if (product.proDesc && param.length == 0) {
     selectSql += ' proDesc=? ';

@@ -111,4 +111,12 @@ router.get("/queryUser",function(req,res) {
        });
     });
 });
+router.get("/queryUserMessage", checkUserLogin);
+router.get("/queryUserMessage",function(req,res) {
+     User.queryUserMessage(req.session.user.id, function (err, data) {
+      if (err) return res.send({ "error": 403, "message": "数据库异常!" });
+       res.send(data);
+    });
+});
+
 module.exports = router;

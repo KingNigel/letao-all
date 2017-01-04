@@ -14,6 +14,8 @@
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "express-session": "~1.14.2",
-    "mysql": "~2.12.0"
+    "mysql": "~2.12.0",
+    "formidable":"*",
+    "moment":"2.17.1"
    }
 }
