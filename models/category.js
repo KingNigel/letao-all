@@ -71,4 +71,47 @@ Category.updateTopCategory = function (category, callback) {
   });
 };
 
+Category.queryTopCategoryPaging = function (page,callback) {
+    var selectSql = 'select * from category  ';
+	  selectSql  += " LIMIT ?,?";
+    db.query(selectSql,[(page.page - 1) * page.size,page.size], function (err, result) {
+        if (err) {
+            return callback(err);
+        }
+        var data = result;
+        callback(err, data);
+    });
+};
+Category.countTopCategory = function (callback) {
+    var selectSql = 'select count(*) as count from category ';
+    db.query(selectSql, function (err, result) {
+        if (err) {
+            return callback(err);
+        }
+        var data = result[0];
+        callback(err, data);
+    });
+};
+Category.querySecondCategoryPaging = function (page,callback) {
+    var selectSql = 'select * from brand  ';
+    selectSql  += " LIMIT ?,?";
+    db.query(selectSql,[(page.page - 1) * page.size,page.size],function (err, result) {
+        if (err) {
+            return callback(err);
+        }
+        console.log(data);
+        var data = result;
+        callback(err, data);
+    });
+};
+Category.countSecondCategory = function (callback) {
+    var selectSql = 'select count(*) as count from brand ';
+    db.query(selectSql, function (err, result) {
+        if (err) {
+            return callback(err);
+        }
+        var data = result[0];
+        callback(err, data);
+    });
+};
 module.exports = Category;

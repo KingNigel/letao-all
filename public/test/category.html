@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>category</title>
+  <script src="./jquery.js"></script>
+</head>
+<body>
+  <h1>测试category</h1>
+  <script>
+     //添加1级分类 add-top-category 测试
+    //   $.ajax({
+    //    'url':"/employee/employeeLogin",
+    //    'type':"POST",
+    //    'data': { "username": "root", "password": "123456" },
+    //    'dataType':'json',
+    //    'success':function(data){
+    //      console.log(data);
+    //       $.ajax({
+    //       'url':"/category/addTopCategory",
+    //       'data': { "categoryName": "分类~~~"},
+    //       'type':"POST",
+    //       'dataType':'json',
+    //       'success':function(data){
+    //         console.log(data);
+    //       }});
+    //  }});
+    //查询1级分类 query-top-category-paging 测试
+    //   $.ajax({
+    //    'url':"/employee/employeeLogin",
+    //    'type':"POST",
+    //    'data': { "username": "root", "password": "123456" },
+    //    'dataType':'json',
+    //    'success':function(data){
+    //      console.log(data);
+    //       $.ajax({
+    //       'url':"/category/queryTopCategoryPaging",
+    //       'data': { "page": 1,"pageSize":5},
+    //       'type':"GET",
+    //       'dataType':'json',
+    //       'success':function(data){
+    //         console.log(data);
+    //       }});
+    //  }});
+     //查询2级分类 query-second-category-paging 测试
+        $.ajax({
+       'url':"/employee/employeeLogin",
+       'type':"POST",
+       'data': { "username": "root", "password": "123456" },
+       'dataType':'json',
+       'success':function(data){
+         console.log(data);
+          $.ajax({
+          'url':"/category/querySecondCategoryPaging",
+          'data': { "page": 1,"pageSize":5},
+          'type':"GET",
+          'dataType':'json',
+          'success':function(data){
+            console.log(data);
+          }});
+     }});
+  </script>
+</body>
+</html>

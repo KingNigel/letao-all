@@ -1,14 +1,15 @@
 var db = require('./db.js');
 function Brand(brand) {
     this.id=brand.id;
-	this.brandName = brand.brandName;
-	this.categoryId = brand.categoryId;
+	  this.brandName = brand.brandName;
+	  this.categoryId = brand.categoryId;
     this.brandLogo = brand.brandLogo;
     this.isDelete = brand.isDelete;
+     this.hot = brand.hot;
 };
 Brand.addSecondCategory = function (brand, callback) {
-  var selectSql = 'insert into brand (id,brandName,categoryId,brandLogo,isDelete)  values (null,?,?,?,1)';
-  db.query(selectSql, [brand.brandName,brand.categoryId,brand.brandLogo], function (err, result) {
+  var selectSql = 'insert into brand (id,brandName,categoryId,brandLogo,isDelete,hot)  values (null,?,?,?,?,?)';
+  db.query(selectSql, [brand.brandName,brand.categoryId,brand.brandLogo,brand.isDelete,brand.hot], function (err, result) {
     if (err) {
       return callback(err);
     }
@@ -45,6 +46,14 @@ Brand.updateSecondCategory = function (brand, callback) {
   else if (brand.isDelete && param.length != 0) {
     selectSql += ' ,isDelete=? ';
     param[param.length] = brand.isDelete;
+  }
+  if (brand.hot && param.length == 0) {
+    selectSql += ' hot=? ';
+    param[param.length] = brand.hot;
+  }
+  else if (brand.hot && param.length != 0) {
+    selectSql += ' ,hot=? ';
+    param[param.length] = brand.hot;
   }
   selectSql+= ' where id=?';
   param[param.length] = brand.id;

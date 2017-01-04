@@ -1,12 +1,11 @@
 var db = require('./db.js');
-
+var moment = require('moment');
 
 function Product(pro) {
 	this.id = pro.id;
 	this.proName = pro.proName;
 	this.oldPrice = pro.oldPrice;
 	this.price = pro.price;
-	//this.pic = pro.pic;
 	this.proDesc = pro.proDesc;
 	this.size = pro.size;
 	this.statu = pro.statu;
@@ -172,7 +171,10 @@ Product.updateProduct = function (product, callback) {
     selectSql += ' ,brandId=? ';
     param[param.length] = product.brandId;
   }
+  
   selectSql+=",updateTime='"+moment().format("YYYY-MM-DD HH:mm:ss")+"'";
+  selectSql+=" where id=?";
+  param[param.length] = product.id;
   db.query(selectSql,param, function (err, result) {
     if (err) {
       return callback(err);

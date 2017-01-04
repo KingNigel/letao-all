@@ -107,6 +107,7 @@ router.get("/queryUser",function(req,res) {
          if (err) return res.send({ "error": 403, "message": "数据库异常！" });
             page.count = result.count;
             page.data = data;
+            console.log(page);
             res.send(page);
        });
     });

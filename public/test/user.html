@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>category</title>
+  <script src="./jquery.js"></script>
+</head>
+<body>
+  <h1>测试category</h1>
+  <script>
+    //  //查询用户 query-user 测试
+    //     $.ajax({
+    //    'url':"/employee/employeeLogin",
+    //    'type':"POST",
+    //    'data': { "username": "root", "password": "123456" },
+    //    'dataType':'json',
+    //    'success':function(data){
+    //      console.log(data);
+    //       $.ajax({
+    //       'url':"/user/queryUser",
+    //       'data': { "page": 1,"pageSize":5},
+    //       'type':"GET",
+    //       'dataType':'json',
+    //       'success':function(data){
+    //         console.log(data);
+    //       }});
+    //  }});
+      //更新用户 update-user 测试
+        $.ajax({
+       'url':"/employee/employeeLogin",
+       'type':"POST",
+       'data': { "username": "root", "password": "123456" },
+       'dataType':'json',
+       'success':function(data){
+         console.log(data);
+          $.ajax({
+          'url':"/user/updateUser",
+          'data': { "id": 1,"isDelete":0},
+          'type':"POST",
+          'dataType':'json',
+          'success':function(data){
+            console.log(data);
+          }});
+     }});
+  </script>
+</body>
+</html>
