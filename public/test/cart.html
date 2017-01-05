@@ -8,9 +8,60 @@
 </head>
 
 <body>
-  <h1>测试category</h1>
+  <h1>测试cart</h1>
   <script>
         //添加购物车  addCart  测试
+      //   $.ajax({
+      // 'url':"/user/login",
+      //  'type':"POST",
+      //  'dataType':'json',
+      //  'data': {"username":"zhoushugang","password":"123456"},
+      //  'success':function(data){
+      //   console.log(data);
+      //       $.ajax({
+      //         'url':"/cart/addCart",
+      //         'type':"POST",
+      //          'data': {"productId":"1","num":"12","size":"190"},
+      //         'dataType':'json',
+      //         'success':function(data){
+      //               console.log(data);
+      //     }});
+      //  }});
+      //更新购物车  updateCart  测试
+      //   $.ajax({
+      // 'url':"/user/login",
+      //  'type':"POST",
+      //  'dataType':'json',
+      //  'data': {"username":"zhoushugang","password":"123456"},
+      //  'success':function(data){
+      //   console.log(data);
+      //       $.ajax({
+      //         'url':"/cart/updateCart",
+      //         'type':"POST",
+      //          'data': {"id":3,"num":"15","size":"180"},
+      //         'dataType':'json',
+      //         'success':function(data){
+      //               console.log(data);
+      //     }});
+      //  }});
+      // //删除购物车  deleteCart  测试
+      //   $.ajax({
+      // 'url':"/user/login",
+      //  'type':"POST",
+      //  'dataType':'json',
+      //  'data': {"username":"zhoushugang","password":"123456"},
+      //  'success':function(data){
+      //   console.log(data);
+      //       $.ajax({
+      //         'url':"/cart/deleteCart",
+      //         'type':"GET",
+      //          'data': {"id":[1,2,3]},
+      //         'dataType':'json',
+      //         'success':function(data){
+      //               console.log(data);
+      //     }});
+      //  }});
+         //查询购物车  queryCart  测试
         $.ajax({
       'url':"/user/login",
        'type':"POST",
@@ -19,14 +70,15 @@
        'success':function(data){
         console.log(data);
             $.ajax({
-              'url':"/cart/addCart",
-              'type':"POST",
-               'data': {"productId":"1","num":"12","size":"190"},
+              'url':"/cart/queryCart",
+              'type':"GET",
+               'data': {"page":1,"pageSize":5},
               'dataType':'json',
               'success':function(data){
                     console.log(data);
           }});
        }});
+       
   </script>
 </body>
 

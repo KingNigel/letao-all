@@ -19,9 +19,11 @@ Cart.addCart = function (cart, callback) {
   });
 };
 Cart.updateCart = function (cart, callback) {
-  var delSql = 'UPDATE cart SET num =?,size=? WHERE id=?';
-  connection.query(delSql, [cart.num, cart.size, cart.id], function (err, res) {
+  var selectSql = 'UPDATE cart SET num =?,size=? WHERE id=?';
+  db.query(selectSql, [cart.num, cart.size, cart.id], function (err, res) {
+    console.log(res);
     if (err) {
+      console.log(err);
       return callback(err);
     }
     callback(err, res);
@@ -47,7 +49,7 @@ Cart.deleteCart = function (id, callback) {
   });
 }
 Cart.queryCart = function (id, page, callback) {
-  var selectSql = 'SELECT c.id,c.productId,c.num,c.size,p.proName,p.price,p.pic from cart as c left join product as p on c.productId=p.id where c.userId=?';
+  var selectSql = 'SELECT c.id,c.productId,c.num,c.size,p.proName,p.price from cart as c left join product as p on c.productId=p.id where c.userId=?';
 
   selectSql +=" LIMIT ?,?";
   db.query(selectSql, [id, (page.page - 1) * page.size, page.size],function (err, res) {

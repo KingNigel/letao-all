@@ -1,6 +1,6 @@
 var express = require('express'),
   router = express.Router(),
-  Cart = require('../models/cart.js');
+  Cart = require('../models/cart.js'),
   Page = require('../models/page.js');
 
 function checkUserLogin(req, res, next) {
@@ -14,7 +14,7 @@ router.post("/addCart", function (req, res) {
   var cart = new Cart({
     userId: req.session.user.id,
     productId: req.body.productId ? req.body.productId : '',
-    num: req.body.num ? req.body.num : '',
+    num: req.body.num ? parseInt(req.body.num) : '',
     size: req.body.size ? req.body.size : ''
   })
   Cart.addCart(cart, function (err, data) {
@@ -25,8 +25,8 @@ router.post("/addCart", function (req, res) {
 router.post("/updateCart",checkUserLogin);
 router.post("/updateCart", function (req, res) {
   var cart = new Cart({
-    id: req.body.id,
-    num: req.body.num ? req.body.num : '',
+    id: parseInt(req.body.id),
+    num: req.body.num ? parseInt(req.body.num) : '',
     size: req.body.size ? req.body.size : ''
   })
   Cart.updateCart(cart, function (err, data) {
@@ -48,6 +48,7 @@ router.get("/queryCart", function (req, res) {
     size: req.query.pageSize ? parseInt(req.query.pageSize) : 10,
   })
   Cart.queryCart(req.session.user.id, page, function (err, data) {
+    console.log(err);
     if (err) return res.send({ "error": 403, "message": "数据库异常！" });
     Cart.countCart(req.session.user.id,function (err, result) {
       if (err) return res.send({ "error": 403, "message": "数据库异常！" });
