@@ -60,7 +60,7 @@ Cart.queryCartPaging = function (id, page, callback) {
   });
 }
 Cart.queryCart = function (id,callback) {
-  var selectSql = 'SELECT c.id,c.productId,c.num,c.size,p.proName,p.price from cart as c left join product as p on c.productId=p.id where c.userId=?';
+  var selectSql = 'SELECT c.id,c.productId,c.num,c.size,p.proName,p.price,p.num as productNum,p.statu,p.size as productSize from cart as c left join product as p on c.productId=p.id where c.userId=?';
   db.query(selectSql, [id],function (err, res) {
     if (err) {
       return callback(err);
