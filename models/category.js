@@ -26,17 +26,17 @@ Category.querySecondCategory = function (id,callback) {
         callback(err, data);
     });
 };
-Category.queryHotSecondCategory = function (id,callback) {
-    var selectSql = 'select * from brand where categoryId=? and isDelete=1 and hot=1';
-    db.query(selectSql,[id],function (err, result) {
-        if (err) {
-            return callback(err);
-        }
-        console.log(data);
-        var data = result;
-        callback(err, data);
-    });
-};
+// Category.queryHotSecondCategory = function (id,callback) {
+//     var selectSql = 'select * from brand where categoryId=? and isDelete=1 and hot=1';
+//     db.query(selectSql,[id],function (err, result) {
+//         if (err) {
+//             return callback(err);
+//         }
+//         console.log(data);
+//         var data = result;
+//         callback(err, data);
+//     });
+// };
 Category.addTopCategory = function (category, callback) {
   var selectSql = 'insert into category (id,categoryName,isDelete)  values (null,?,1)';
   db.query(selectSql, [category.categoryName], function (err, result) {

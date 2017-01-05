@@ -83,7 +83,7 @@ router.post("/updatePassword", function (req, res) {
     if (result.password != oldPassword) res.send({ "error": 403, "message": "密码错误!" });
     User.updatePassword(id, newPassword, function (err, data) {
       if (err) return res.send({ "error": 403, "message": "数据库异常!" });
-      req.session.user.password=newPassword;
+      req.session.user = null;
       res.send({ "success": true });
     })
   });
@@ -125,11 +125,10 @@ router.get("/queryUserMessage", function (req, res) {
 });
 var createCode = function () {
   var code = "";
-  var codeLength = 4;//验证码的长度   
-  var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-    'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');//随机数  
+  var codeLength = 6;//验证码的长度   
+  var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);//随机数  
   for (var i = 0; i < codeLength; i++) {//循环操作  
-    var index = Math.floor(Math.random() * 36);//取得随机数的索引（0~35）  
+    var index = Math.floor(Math.random() * 10);//取得随机数的索引（0~35）  
     code += random[index];//根据索引取得随机数加到code上  
   }
   return code;
