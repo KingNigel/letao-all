@@ -46,7 +46,7 @@ Product.queryProductDetailList= function (product, page, callback) {
   });
 };
 Product.queryProduct = function (product, page, callback) {
-	var selectSql = "SELECT id,proName,price,num FROM product WHERE statu=1";
+	var selectSql = "SELECT * FROM product WHERE statu=1";
 	var param = new Array();
 	if (product.proName) {
 		selectSql = selectSql + " AND  proName LIKE ? ";

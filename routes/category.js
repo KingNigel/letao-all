@@ -4,8 +4,8 @@ var express = require('express'),
     formidable = require('formidable'),
     fs = require('fs'),
     path = require('path'),
-    Category = require('../models/category.js');
-Brand = require('../models/brand.js');
+    Category = require('../models/category.js'),
+     Brand = require('../models/brand.js');
 function checkRootLogin(req, res, next) {
     if (!req.session.employee) {
         return res.send({ "error": 400, "message": "未登录！" });
