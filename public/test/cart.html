@@ -70,6 +70,23 @@
        'success':function(data){
         console.log(data);
             $.ajax({
+              'url':"/cart/queryCartPaging",
+              'type':"GET",
+               'data': {"page":1,"pageSize":5},
+              'dataType':'json',
+              'success':function(data){
+                    console.log(data);
+          }});
+       }});
+            //查询购物车  queryCart  测试
+        $.ajax({
+      'url':"/user/login",
+       'type':"POST",
+       'dataType':'json',
+       'data': {"username":"zhoushugang","password":"123456"},
+       'success':function(data){
+        console.log(data);
+            $.ajax({
               'url':"/cart/queryCart",
               'type':"GET",
                'data': {"page":1,"pageSize":5},
