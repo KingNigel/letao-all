@@ -49,7 +49,7 @@ Cart.deleteCart = function (id, callback) {
   });
 }
 Cart.queryCartPaging = function (id, page, callback) {
-  var selectSql = 'SELECT c.id,c.productId,c.num,c.size,p.proName,p.price from cart as c left join product as p on c.productId=p.id where c.userId=?';
+  var selectSql = 'SELECT c.id,c.productId,c.num,c.size,p.proName,p.price,p.oldPrice,p.num as productNum,p.statu,p.size as productSize from cart as c left join product as p on c.productId=p.id where c.userId=?';
 
   selectSql +=" LIMIT ?,?";
   db.query(selectSql, [id, (page.page - 1) * page.size, page.size],function (err, res) {
