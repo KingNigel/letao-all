@@ -93,7 +93,7 @@ Category.countTopCategory = function (callback) {
     });
 };
 Category.querySecondCategoryPaging = function (page,callback) {
-    var selectSql = 'select * from brand  ';
+    var selectSql = 'SELECT b.*,c.categoryName FROM brand AS b LEFT JOIN category AS c ON b.categoryId=c.id  ';
     selectSql  += " LIMIT ?,?";
     db.query(selectSql,[(page.page - 1) * page.size,page.size],function (err, result) {
         if (err) {

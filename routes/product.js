@@ -28,13 +28,11 @@ router.get("/queryProduct", function (req, res) {
     })
     Product.queryProduct(product, page, function (err, data) {
         if (err) return res.send({ "error": 403, "message": "数据库异常！" });
+            if (data.length==0){
+                return res.send(data);
+            }
         Product.countProduct(function (err, result) {
             if (err) return res.send({ "error": 403, "message": "数据库异常！" });
-            if (result.count==0){
-                page.count = result.count;
-                page.data = data;
-                return res.send(page);
-            }
             var idStr="";
             for(let i=0;i<data.length;i++){
                 if(i==0){
@@ -46,6 +44,7 @@ router.get("/queryProduct", function (req, res) {
                 data[i].pic=new Array();
             }
             ProPic.queryPic(idStr,function(err,picData){
+                console.log(picData);
                if (err) return res.send({ "error": 403, "message": "数据库异常！" });
                for(let l=0;l<picData.length;l++){
                    for(let n=0;n<data.length;n++)
