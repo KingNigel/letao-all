@@ -28,5 +28,14 @@ ProPic.queryPic = function (proId, callback) {
     callback(err, result);
   });
 };
+ProPic.delPic = function (proId, callback) {
+  var selectSql = 'DELETE FROM product_picture WHERE  productId =?';
+  db.query(selectSql,[proId],function (err, result) {
+    if (err) {
+      return callback(err);
+    }
+    callback(err, result);
+  });
+};
 
 module.exports = ProPic;
