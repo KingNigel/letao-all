@@ -11,7 +11,18 @@ ProPic.addPic = function (pic, callback) {
   var selectSql = 'insert into product_picture (id,picName,productId,picAddr)  values (null,?,?,?)';
   db.query(selectSql, [pic.picName, pic.productId, pic.picAddr], function (err, result) {
     if (err) {
+      
       console.log(err);
+      return callback(err);
+    }
+    callback(err, result);
+  });
+};
+ProPic.queryPic = function (proId, callback) {
+  var selectSql = 'SELECT * FROM product_picture WHERE productId in('+proId+')';
+  console.log(selectSql);
+  db.query(selectSql, function (err, result) {
+    if (err) {
       return callback(err);
     }
     callback(err, result);

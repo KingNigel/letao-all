@@ -29,10 +29,29 @@ router.get("/queryProduct", function (req, res) {
         if (err) return res.send({ "error": 403, "message": "数据库异常！" });
         Product.countProduct(function (err, result) {
             if (err) return res.send({ "error": 403, "message": "数据库异常！" });
+            var idStr="";
+            for(let i=0;i<data.length;i++){
+                if(i==0){
+                    idStr+=data[i].id
+                }
+                else{
+                    idStr+=","+data[i].id
+                }
+            }
+            ProPic.queryPic(idStr,function(err,picData){
+               if (err) return res.send({ "error": 403, "message": "数据库异常！" });
+               for(let l=0;l<picData.length;l++){
+                   for(let n=0;n<data.length;n++)
+                   if(data[n].id==picData[l].productId){
+                       if(!data[n].pic) data[n].pic=new Array();
+                       data[n].pic[data[n].pic.length]=picData[l];
+                   }
+               }
             page.count = result.count;
             page.data = data;
-
             res.send(page);
+            })
+
         })
     })
 });

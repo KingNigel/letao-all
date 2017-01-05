@@ -65,7 +65,7 @@ User.getUserByName = function (username, callback) {
 		if (err) {
 			return callback(err);
 		}
-		var data=result[0];
+		var data=result;
 		callback(err, data);
 	});
 };

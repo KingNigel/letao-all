@@ -9,23 +9,35 @@
   <h1>测试product</h1>
   <script>
     //产品列表查询 query-product-detail-list 测试
-      $.ajax({
-       'url':"/employee/employeeLogin",
-       'type':"POST",
-       'data': { "username": "root", "password": "123456" },
-       'dataType':'json',
-       'success':function(data){
-         console.log(data);
-          $.ajax({
-          'url':"/product/queryProductDetailList",
-          'data': { "page": 1, "pageSize": 10 },
-          'type':"GET",
-          'dataType':'json',
-          'success':function(data){
-            console.log(data);
-          }});
+    //   $.ajax({
+    //    'url':"/employee/employeeLogin",
+    //    'type':"POST",
+    //    'data': { "username": "root", "password": "123456" },
+    //    'dataType':'json',
+    //    'success':function(data){
+    //      console.log(data);
+    //       $.ajax({
+    //       'url':"/product/queryProductDetailList",
+    //       'data': { "page": 1, "pageSize": 10 },
+    //       'type':"GET",
+    //       'dataType':'json',
+    //       'success':function(data){
+    //         console.log(data);
+    //       }});
     
-     }});
+    //  }});
+     
+     //修改密码  queryProduct  测试
+
+  
+            $.ajax({
+              'url':"/product/queryProduct",
+              'type':"GET",
+              'dataType':'json',
+               'data': { "page": 1, "pageSize": 10,"brandId":1},
+              'success':function(data){
+                    console.log(data);
+          }});
   </script>
 </body>
 </html>
