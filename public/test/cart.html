@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>cart</title>
+  <script src="./jquery.js"></script>
+</head>
+
+<body>
+  <h1>测试category</h1>
+  <script>
+        //添加购物车  addCart  测试
+        $.ajax({
+      'url':"/user/login",
+       'type':"POST",
+       'dataType':'json',
+       'data': {"username":"zhoushugang","password":"123456"},
+       'success':function(data){
+        console.log(data);
+            $.ajax({
+              'url':"/cart/addCart",
+              'type':"POST",
+               'data': {"productId":"1","num":"12","size":"190"},
+              'dataType':'json',
+              'success':function(data){
+                    console.log(data);
+          }});
+       }});
+  </script>
+</body>
+
+</html>

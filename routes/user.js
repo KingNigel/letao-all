@@ -17,10 +17,10 @@ function checkUserLogin(req, res, next) {
 }
 
 router.post("/register", function (req, res) {
-  if (!req.session.vCode||req.session.vCode!=req.body.vCode) res.send({ "error": 401, "message": "验证码错误!" });
-  if (!req.body.username) res.send({ "error": 403, "message": "用户名未填写！" });
-  if (!req.body.password) res.send({ "error": 403, "message": "密码未填写！" });
-  if (!req.body.mobile) res.send({ "error": 403, "message": "用户手机号未填写！" });
+  if (!req.session.vCode||req.session.vCode!=req.body.vCode) return res.send({ "error": 401, "message": "验证码错误!" });
+  if (!req.body.username) return res.send({ "error": 403, "message": "用户名未填写！" });
+  if (!req.body.password)  return res.send({ "error": 403, "message": "密码未填写！" });
+  if (!req.body.mobile)  return res.send({ "error": 403, "message": "用户手机号未填写！" });
   //密码加密
   var md5 = crypto.createHash('md5');
   var password = md5.update(req.body.password).digest('base64');
