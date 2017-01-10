@@ -27,16 +27,48 @@
     
     //  }});
      
-     //修改密码  queryProduct  测试
-
-  
-            $.ajax({
-              'url':"/product/queryProduct",
-              'type':"GET",
+    //  //修改密码  queryProduct  测试
+    //     $.ajax({
+    //       'url':"/product/queryProduct",
+    //       'type':"GET",
+    //       'dataType':'json',
+    //         'data': { "page": 1, "pageSize": 10,"brandId":1},
+    //       'success':function(data){
+    //             console.log(data);
+    //     }});
+          //产品列表查询 add-product 测试
+          // $.ajax({
+          // 'url':"/employee/employeeLogin",
+          // 'type':"POST",
+          // 'data': { "username": "root", "password": "123456" },
+          // 'dataType':'json',
+          // 'success':function(data){
+          //   console.log(data);
+          //     $.ajax({
+          //     'url':"/product/addProduct",
+          //     'data': { "proName": "chanpin1", "oldPrice": 17.8,"price":8.8,"proDesc":"产品不错","size":"160-190","statu":1,"num":10,"brandId":1,"picName1":"tupian1","picAddr1":"./1.jpg","picName2":"tupian2","picAddr2":"./2.jpg"},
+          //     'type':"POST",
+          //     'dataType':'json',
+          //     'success':function(data){
+          //       console.log(data);
+          //     }});
+          // }});
+         //产品列表查询 add-product 测试
+          $.ajax({
+          'url':"/employee/employeeLogin",
+          'type':"POST",
+          'data': { "username": "root", "password": "123456" },
+          'dataType':'json',
+          'success':function(data){
+            console.log(data);
+              $.ajax({
+              'url':"/product/updateProduct",
+              'data': {"id":39,"proName": "123123", "oldPrice": 17.8,"price":8.8,"proDesc":"产品不错","size":"160-190","statu":1,"num":10,"brandId":1,"picName1":"tupian1","picAddr1":"./3.jpg","picName2":"tupian2","picAddr2":"./4.jpg"},
+              'type':"POST",
               'dataType':'json',
-               'data': { "page": 1, "pageSize": 10,"brandId":1},
               'success':function(data){
-                    console.log(data);
+                console.log(data);
+              }});
           }});
   </script>
 </body>

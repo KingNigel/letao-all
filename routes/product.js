@@ -117,40 +117,19 @@ router.post("/addProductPic", function (req, res) {
 
             })
         }
-        // var product = new Product({
-        //     proName: fields.proName ? fields.proName : '',
-        //     oldPrice: fields.oldPrice ? parseFloat(fields.oldPrice) : '',
-        //     price: fields.price ? parseFloat(fields.price) : '',
-        //     proDesc: fields.proDesc ? fields.proDesc : '',
-        //     size: fields.size ? fields.size : '',
-        //     statu: fields.statu ? parseInt(fields.statu) : '',
-        //     updateTime: moment().format("YYYY-MM-DD HH:mm:ss"),
-        //     num: fields.num ? parseInt(fields.num) : '',
-        //     brandId: fields.brandId ? parseInt(fields.brandId) : ''
-        // })
-        // Product.addProduct(product, function (err, data) {
-        //     if (err) return res.send({ "error": 403, "message": "数据库异常！" });
-        //     for (let i = 1; i < 4; i++) {
-        //         var file = files['pic' + i];
-        //         if (!file || file.name == "") break;
-        //         let picName = data.insertId + '-' + i + path.extname(file.name);
-        //         fs.rename(file.path, 'public\\product\\' + picName, function (err) {
-        //             if (err) res.send({ "error": 403, "message": "图片保存异常！" });
-
-        //             ProPic.addPic({
-        //                 picName: picName,
-        //                 productId: data.insertId,
-        //                 picAddr: '/product/' + picName
-        //             }, function (err, data) {
-        //                 console.log("加入一张图片成功！");
-        //             })
-        //         })
-        //     }
-        //     res.send({ "success": true });
-        //})
     });
 });
 router.post("/addProduct", checkRootLogin);
+
+var addPic=function(picName,picAddr,id){
+       ProPic.addPic({
+                picName: picName,
+                productId: id,
+                picAddr: picAddr
+            }, function (err, data) {
+                console.log("加入一张图片成功！");
+            })
+}
 router.post("/addProduct", function (req, res) {
 
     var product = new Product({
@@ -166,18 +145,15 @@ router.post("/addProduct", function (req, res) {
     })
     Product.addProduct(product, function (err, data) {
         if (err) return res.send({ "error": 403, "message": "数据库异常！" });
-        for (let i = 0; i < req.body.pic.length; i++) {
-
-            var file = req.body.pic[0];
-
-            ProPic.addPic({
-                picName: file.picName,
-                productId: data.insertId,
-                picAddr: file.picAddr
-            }, function (err, data) {
-                console.log("加入一张图片成功！");
-            })
-
+       
+        if (req.body.picName1&&req.body.picAddr1){
+            addPic(req.body.picName1,req.body.picAddr1,data.insertId);
+        }
+         if (req.body.picName2&&req.body.picAddr2){
+            addPic(req.body.picName2,req.body.picAddr2,data.insertId);
+        }
+        if (req.body.picName3&&req.body.picAddr3){
+            addPic(req.body.picName3,req.body.picAddr3,data.insertId);
         }
         res.send({ "success": true });
     })
@@ -202,16 +178,15 @@ router.post("/updateProduct", function (req, res) {
 
         ProPic.delPic(req.body.id, function (err, picData) {
             if (err) return res.send({ "error": 403, "message": "数据库异常！" });
-            for (let i = 0; i < req.body.pic.length; i++) {
-                var file = req.body.pic[0];
-                ProPic.addPic({
-                    picName: file.picName,
-                    productId: req.body.id,
-                    picAddr: file.picAddr
-                }, function (err, data) {
-                    console.log("加入一张图片成功！");
-                })
-            }
+        if (req.body.picName1&&req.body.picAddr1){
+            addPic(req.body.picName1,req.body.picAddr1,req.body.id);
+        }
+         if (req.body.picName2&&req.body.picAddr2){
+            addPic(req.body.picName2,req.body.picAddr2,req.body.id);
+        }
+        if (req.body.picName3&&req.body.picAddr3){
+            addPic(req.body.picName3,req.body.picAddr3,req.body.id);
+        }
         })
 
 

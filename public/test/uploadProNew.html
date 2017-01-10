@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+
+    <link rel='stylesheet' href='./stylesheets/bootstrap.css' />
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link href="./stylesheets/bootstrap-responsive.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/"></a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container" class="container">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/product/addProductPic">
+            <fieldset>
+                <legend>新增</legend>
+                <div class="control-group">
+                    <label class="control-label" for="pic1">文件1</label>
+                    <div class="controls">
+                        <input type="file" class="input-xlarge" id="pic1" name="pic1">
+                    </div>
+                </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">上传</button>
+    </div>
+    </fieldset>
+    </form>
+      <hr />
+      <div id="container2" class="container">
+          <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/product/updateProduct">
+            <fieldset>
+                <legend>修改</legend>
+                <div class="control-group">
+                    <label class="control-label" for="pic1">文件1</label>
+                    <div class="controls">
+                        <input type="file" class="input-xlarge" id="pic1" name="pic1">
+                    </div>
+                    <label class="control-label" for="pic2">文件2</label>
+                    <div class="controls">
+                        <input type="file" class="input-xlarge" id="pic2" name="pic2">
+                    </div>
+                     <label class="control-label" for="pic3">文件3</label>
+                    <div class="controls">
+                        <input type="file" class="input-xlarge" id="pic3" name="pic3">
+                    </div>
+                   <label class="control-label" for="proName">产品名称</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="proName" name="proName" value="篮球鞋">
+                    </div>
+                    <label class="control-label" for="oldPrice">旧价格</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="oldPrice" name="oldPrice" value="888.10">
+                    </div>
+                    <label class="control-label" for="price">价格</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="price" name="price" value="499.10">
+                    </div>
+                    <label class="control-label" for="proDesc">产品描述</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="proDesc" name="proDesc" value="描述">
+                    </div>
+                    <label class="control-label" for="proDesc">产品尺寸</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="proDesc" name="size" value="170-195">
+                    </div>
+                    <label class="control-label" for="proDesc">是否启用</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="proDesc" name="statu" value=1>
+                    </div>
+                    <label class="control-label" for="num">库存</label>
+                    <div class="controls">
+                       <input type="text" class="input-xlarge" id="num" name="num" value="20">
+                    </div>
+                    <label class="control-label" for="brandId">品牌id</label>
+                    <div class="controls">
+                       <input type="text" class="input-xlarge" id="brandId" name="brandId" value="1">
+                    </div>
+                    <label class="control-label" for="proName">id</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="id" name="id" value="">
+                    </div>
+                </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">上传</button>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    <hr />
+    <footer>
+        <p>
+            <a target="_blank"></a>
+        </p>
+    </footer>
+    </div>
+</body>
+<script src="./javascripts/jquery.js"></script>
+<script src="./javascripts/bootstrap.js"></script>
+
+</html>
